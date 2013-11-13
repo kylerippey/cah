@@ -5,6 +5,8 @@ module Cah
   class Deck
     extend Forwardable
 
+    attr_reader :discarded
+
     def_delegators :@unplayed, :length, :count
 
     def initialize(file_path)
@@ -18,7 +20,7 @@ module Cah
     end
 
     def discard(cards = [])
-      @discarded += cards
+      @discarded += Array(cards)
     end
 
     protected
