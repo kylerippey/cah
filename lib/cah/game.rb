@@ -15,8 +15,8 @@ module Cah
       @played_cards = {}
       @czar_order.shuffle!
 
-      @white_deck = Deck.new(File.expand_path("../../../../cards/white.yml", __FILE__))
-      @black_deck = Deck.new(File.expand_path("../../../../cards/black.yml", __FILE__))
+      @white_deck = Deck.new(File.expand_path("../../../cards/white.yml", __FILE__))
+      @black_deck = Deck.new(File.expand_path("../../../cards/black.yml", __FILE__))
     end
 
     def join(username)

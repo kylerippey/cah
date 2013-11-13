@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'yaml'
 
 module Cah
   class Deck
