@@ -1,7 +1,8 @@
 module Cah
   class Game
 
-    attr_accessor :players, :started, :white_deck, :black_deck, :black_card, :played_cards, :czar_order
+    attr_reader :white_deck, :black_deck
+    attr_accessor :players, :started, :black_card, :played_cards, :czar_order
 
     def initialize
       @players = {}
