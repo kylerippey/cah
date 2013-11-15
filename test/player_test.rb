@@ -2,6 +2,12 @@ require 'test_helper'
 
 class PlayerTest < MiniTest::Unit::TestCase
 
+  def test_player_keeps_track_of_name
+    @player = Cah::Player.new("TestPlayer")
+
+    assert "TestPlayer", @player.username
+  end
+
   def test_player_keeps_track_of_score
     @player = Cah::Player.new("TestPlayer")
 
