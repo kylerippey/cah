@@ -18,7 +18,7 @@ module Cah
     end
 
     def award_card(black_card)
-      @won_cards += black_card
+      @won_cards += Array(black_card)
     end
 
     def replenish(deck)
