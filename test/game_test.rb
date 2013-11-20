@@ -32,12 +32,13 @@ class GameTest < MiniTest::Unit::TestCase
     # start the game
     @game.start
 
+    initial_czar_order = @game.czar_order.dup
+
     assert(@game.started?, "game should report that it has started")
 
     black_card = @game.black_card
     assert(black_card, "should be a selected black card")
-    czar = @game.czar
-    assert(!czar.empty?, "should have a czar")
+    assert_equal("kyle", @game.czar, "kyle should be the first czar")
 
     # people play cards
     assert_equal(false, @game.play_card("jeff", @player.cards.first), "can't play a card you don't have")
@@ -56,7 +57,7 @@ class GameTest < MiniTest::Unit::TestCase
     assert_equal({'jeff' => 1, 'kyle' => 0, 'katie' => 0}, @game.scores)
 
     refute_equal(black_card, @game.black_card, "should have chosen a new black card")
-    refute_equal(czar, @game.czar, "should have a new czar")
+    assert_equal("jeff", @game.czar, "jeff should be the second czar")
     [@player, @player2, @player3].each do |player|
       assert_equal(10, player.cards.count, "each player should have a full hand")
     end
@@ -70,8 +71,7 @@ class GameTest < MiniTest::Unit::TestCase
     assert_equal(3, @game.czar_order.count)
     black_card = @game.black_card
     assert(black_card, "should be a selected black card")
-    czar = @game.czar
-    assert(czar, "should have a czar")
+    assert(!@game.czar.empty?, "should have a czar")
   end
 
 end

@@ -1,8 +1,8 @@
 module Cah
   class Game
 
-    attr_reader :white_deck, :black_deck
-    attr_accessor :players, :started, :black_card, :played_cards, :czar_order
+    attr_reader :white_deck, :black_deck, :czar_order
+    attr_accessor :players, :started, :black_card, :played_cards
 
     def initialize
       @players = {}
@@ -35,6 +35,9 @@ module Cah
         black_deck.discard(leaving_player.won_cards)
         white_deck.discard(leaving_player.cards)
         players.delete(username)
+
+        # TODO: Remove from czar_order
+        # TODO: Handle czar leaving
       end
     end
 
