@@ -75,8 +75,6 @@ module Cah
       end
     end
 
-    alias_method :start, :next_round
-    
     def next_round
       # Discard played white cards
       white_deck.discard(played_cards.values)
@@ -96,6 +94,8 @@ module Cah
       # If this is the first round of the game, mark it as such
       @started ||= Time.now
     end
+
+    alias_method :start, :next_round
 
     def restart
       setup
