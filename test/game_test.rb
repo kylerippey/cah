@@ -27,7 +27,6 @@ class GameTest < MiniTest::Unit::TestCase
     assert_equal(3, @game.czar_order.count)
     assert_equal(10, @player3.cards.count)
 
-    assert_nil(@game.czar, "shouldn't have a czar until the game starts")
     assert_nil(@game.black_card, "shouldn't have a black card until the game starts")
 
     # start the game

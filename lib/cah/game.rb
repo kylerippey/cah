@@ -51,7 +51,7 @@ module Cah
     end
 
     def czar
-      started? ? czar_order.first : nil
+      czar_order.first
     end
 
     def play_card(username, card)
@@ -75,6 +75,8 @@ module Cah
       end
     end
 
+    alias_method :start, :next_round
+    
     def next_round
       # Discard played white cards
       white_deck.discard(played_cards.values)
@@ -90,12 +92,9 @@ module Cah
 
       # Draw next black card
       @black_card = black_deck.draw(1).first
-    end
 
-    def start
-      # czar_order.shuffle
-      next_round
-      @started = Time.now
+      # If this is the first round of the game, mark it as such
+      @started ||= Time.now
     end
 
     def restart
