@@ -4,6 +4,8 @@ class GameTest < MiniTest::Unit::TestCase
 
   def test_can_start_and_play_round
     @game = Cah::Game.new
+
+    assert(!@game.started?, "game should report that it has not yet started")
     assert(@game.white_deck.length > 0, "expected to have white cards")
     assert(@game.black_deck.length > 0, "expected to have black cards")
 
@@ -30,10 +32,13 @@ class GameTest < MiniTest::Unit::TestCase
 
     # start the game
     @game.start
+
+    assert(@game.started?, "game should report that it has started")
+
     black_card = @game.black_card
     assert(black_card, "should be a selected black card")
     czar = @game.czar
-    assert(czar, "should have a czar")
+    assert(!czar.empty?, "should have a czar")
 
     # people play cards
     assert_equal(false, @game.play_card("jeff", @player.cards.first), "can't play a card you don't have")
