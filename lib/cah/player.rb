@@ -1,7 +1,6 @@
 module Cah
   class Player
-    attr_reader :username
-    attr_accessor :cards, :won_cards
+    attr_reader :username, :cards, :won_cards
 
     def initialize(username)
       @username = username
