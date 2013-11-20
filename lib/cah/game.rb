@@ -89,7 +89,7 @@ module Cah
       czar_order.rotate! if started?
 
       # Draw next black card
-      @black_card = black_deck.draw
+      @black_card = black_deck.draw(1).first
     end
 
     def start

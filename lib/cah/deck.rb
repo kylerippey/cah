@@ -14,7 +14,7 @@ module Cah
       @unplayed = YAML.load_file(file_path).shuffle
     end
 
-    def draw(count = 1)
+    def draw(count)
       reshuffle if @unplayed.count < count
       @unplayed.shift(count)
     end

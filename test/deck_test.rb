@@ -13,7 +13,7 @@ class DeckTest < MiniTest::Unit::TestCase
   def test_cards_may_be_drawn_and_discarded
     original_count = @deck.count
 
-    hand = @deck.draw
+    hand = @deck.draw(1)
 
     assert !hand.empty?, "should have drawn a card"
 
