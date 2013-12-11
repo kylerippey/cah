@@ -24,4 +24,18 @@ class DeckTest < MiniTest::Unit::TestCase
     assert_equal 1, @deck.discarded.count
   end
 
+  def test_deck_should_be_shuffled_upon_creation
+    # Let's make sure that creating a deck 3 times and
+    # drawing the top card each time results in at least
+    # 2 unique cards. This should avoid random test failures
+    # in the rare case we draw the same card twice by chance.
+
+    cards = []
+    cards << Cah::Deck.new(File.expand_path("../../cards/white.yml", __FILE__)).draw(1).first
+    cards << Cah::Deck.new(File.expand_path("../../cards/white.yml", __FILE__)).draw(1).first
+    cards << Cah::Deck.new(File.expand_path("../../cards/white.yml", __FILE__)).draw(1).first
+
+    assert cards.uniq.count >= 2, "creating a new deck should shuffle the cards"
+  end
+
 end
