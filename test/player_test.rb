@@ -2,20 +2,27 @@ require 'test_helper'
 
 class PlayerTest < MiniTest::Unit::TestCase
 
-  def test_player_keeps_track_of_name
-    @player = Cah::Player.new("TestPlayer")
-
-    assert "TestPlayer", @player.username
+  def test_player_keeps_track_of_username
+    game = Cah::Game.new
+    player = game.join("Bob")
+    assert "Bob", player.username
   end
 
-  def test_player_keeps_track_of_score
-    @player = Cah::Player.new("TestPlayer")
+  def test_player_draws_cards_upon_joining_a_game
+    game = Cah::Game.new
+    player = game.join("Bob")
+    assert_equal 10, player.hand.count, "player should have a hand of cards"
+  end
 
-    assert_equal 0, @player.score, "player score should be 0"
+  def test_player_knows_when_its_the_czar
+    game = Cah::Game.new
+    player_alice = game.join("Alice")
+    player_bob = game.join("Bob")
 
-    @player.award_card("This is a card.")
+    game.start
 
-    assert_equal 1, @player.score, "player score should be 1"
+    assert player_alice.czar?, "alice should be czar"
+    assert !player_bob.czar?, "bob should not be czar"
   end
 
 end

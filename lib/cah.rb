@@ -4,5 +4,7 @@ module Cah
 
   autoload :Deck, 'cah/deck'
   autoload :Game, 'cah/game'
+  autoload :Round, 'cah/round'
   autoload :Player, 'cah/player'
+  autoload :GameplayException, 'cah/gameplay_exception'
 end
